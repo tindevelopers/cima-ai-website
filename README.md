@@ -1,64 +1,115 @@
-# Radiant
+# CIMA AI Website
 
-Radiant is a modern SaaS website template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org), optimized with [Turborepo](https://turbo.build) for CI/CD workflows and deployment to Vercel.
+A modern, high-performance website built with Next.js and Turborepo.
 
-## Getting started
+## 🏗️ Monorepo Structure
 
-To get started with this template, first install the npm dependencies:
+This project uses Turborepo to manage a monorepo with the following structure:
+
+```
+├── apps/
+│   └── web/                 # Next.js application
+├── packages/
+│   └── ui/                  # Shared UI components
+├── .github/workflows/       # CI/CD workflows
+└── turbo.json              # Turborepo configuration
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 20+
+- npm
+
+### Installation
 
 ```bash
 npm install
 ```
 
-Run the development server:
+### Development
 
 ```bash
+# Start all apps in development mode
 npm run dev
+
+# Start only the web app
+npm run dev --filter=web
+
+# Build all packages
+npm run build
+
+# Run linting
+npm run lint
+
+# Run type checking
+npm run type-check
+
+# Run tests
+npm run test
 ```
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+## 📦 Packages
 
-## CI/CD Pipeline
+### Apps
 
-This project uses Turborepo for optimized CI/CD workflows with GitHub Actions:
+- **web**: Next.js application for the main website
+
+### Packages
+
+- **ui**: Shared UI components and design system
+
+## 🔧 Scripts
+
+- `npm run dev` - Start all apps in development mode
+- `npm run build` - Build all packages
+- `npm run lint` - Run ESLint on all packages
+- `npm run type-check` - Run TypeScript type checking
+- `npm run test` - Run tests for all packages
+- `npm run clean` - Clean all build artifacts
+
+## 🚀 Deployment
+
+The project is configured with GitHub Actions for CI/CD:
+
+- **CI**: Runs on every push and PR, includes build, lint, type-check, and test
+- **Deploy**: Automatically deploys to Vercel on pushes to main branch
+
+### Environment Variables
+
+Set up the following secrets in your GitHub repository:
+
+- `VERCEL_TOKEN`: Your Vercel API token
+- `ORG_ID`: Your Vercel organization ID
+- `PROJECT_ID`: Your Vercel project ID
+
+## 🛠️ Development
+
+### Adding a new package
 
 ```bash
-# Run full CI pipeline
-npm run ci
+# Create a new package
+mkdir packages/new-package
+cd packages/new-package
+npm init -y
 
-# Development with Turborepo
-npm run turbo:dev
-
-# GitHub Actions trigger
-npm run github-actions
+# Add it to the workspace
+# Update the root package.json workspaces array
 ```
 
-### GitHub Actions Workflow
-- **Trigger**: Push to `main` or `saas-admin` branches
-- **Pipeline**: Lint → Type Check → Test → Build
-- **Optimization**: Turborepo parallel execution and caching
-- **Purpose**: Template validation and quality assurance
+### Adding a new app
 
-## Available Pages
+```bash
+# Create a new app
+mkdir apps/new-app
+cd apps/new-app
+npm init -y
 
-- **Home** (`/`) - Main landing page
-- **Company** (`/company`) - About page  
-- **Login** (`/login`) - Authentication page
-- **Pricing** (`/pricing`) - Pricing plans
+# Add it to the workspace
+# Update the root package.json workspaces array
+```
 
-## Customizing
+## 📝 License
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
-
-## License
-
-This site template is a commercial product and is licensed under the [Tailwind Plus license](https://tailwindcss.com/plus/license).
-
-## Learn more
-
-To learn more about the technologies used in this site template, see the following resources:
-
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
-- [Sanity](https://www.sanity.io) - the Sanity website
+This project is licensed under the MIT License.

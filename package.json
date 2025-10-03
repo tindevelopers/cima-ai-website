@@ -1,49 +1,25 @@
 {
-  "name": "radiant",
+  "name": "cima-ai-website",
   "version": "0.1.0",
   "private": true,
   "packageManager": "npm@10.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit",
-    "test": "echo \"No tests specified\" && exit 0",
-    "turbo:dev": "turbo dev",
-    "turbo:build": "turbo build",
-    "turbo:lint": "turbo lint",
-    "turbo:type-check": "turbo type-check",
-    "turbo:test": "turbo test",
-    "ci": "turbo build lint type-check test",
-    "github-actions": "echo 'GitHub Actions CI/CD Pipeline with Turborepo'"
-  },
-  "dependencies": {
-    "@headlessui/react": "^2.2.6",
-    "@heroicons/react": "^2.2.0",
-    "clsx": "^2.1.1",
-    "dayjs": "^1.11.13",
-    "framer-motion": "^12.23.11",
-    "lucide-react": "^0.544.0",
-    "next": "^15.5.4",
-    "react": "^19",
-    "react-dom": "^19",
-    "react-use-measure": "^2.1.7"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "test": "turbo test",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "ci": "turbo build lint type-check test"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.14",
-    "@types/node": "^24",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.4",
-    "postcss": "^8.5.6",
+    "@turbo/gen": "^1.12.4",
     "prettier": "^3.6.2",
-    "prettier-plugin-organize-imports": "^4.2.0",
-    "prettier-plugin-tailwindcss": "^0.6.14",
-    "tailwindcss": "^4.0.0",
-    "turbo": "^2.5.8",
-    "typescript": "^5"
+    "turbo": "^2.5.8"
   }
 }
