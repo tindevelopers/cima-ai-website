@@ -27,9 +27,8 @@ jobs:
         run: npm run build
 
       - name: Deploy Preview to Vercel
-        run: |
-          cd apps/web
-          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
+        working-directory: apps/web
+        run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
         env:
           VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
@@ -55,9 +54,8 @@ jobs:
         run: npm run build
 
       - name: Deploy Preview Branch to Vercel
-        run: |
-          cd apps/web
-          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
+        working-directory: apps/web
+        run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
         env:
           VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
@@ -83,9 +81,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to Production
-        run: |
-          cd apps/web
-          npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
+        working-directory: apps/web
+        run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
         env:
           VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
