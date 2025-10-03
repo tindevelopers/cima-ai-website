@@ -55,16 +55,10 @@ jobs:
       - name: Build packages
         run: npm run build
 
-      - name: Link Vercel Project
+      - name: Deploy to Production
         run: |
           cd apps/web
-          npx vercel link --yes --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }}
-
-      - name: Deploy to Production
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.PROJECT_ID }}
-          working-directory: ./apps/web
-          vercel-args: '--prod'
+          npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
