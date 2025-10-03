@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, preview]
   workflow_dispatch:
 
 jobs:
@@ -27,6 +27,34 @@ jobs:
         run: npm run build
 
       - name: Deploy Preview to Vercel
+        run: |
+          cd apps/web
+          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+
+  deploy-preview-branch:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/preview'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages
+        run: npm run build
+
+      - name: Deploy Preview Branch to Vercel
         run: |
           cd apps/web
           npx vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.ORG_ID }} --project ${{ secrets.PROJECT_ID }}
