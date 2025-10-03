@@ -1,4 +1,3 @@
-
 'use client'
 
 import {
@@ -14,6 +13,7 @@ import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
 
 const links = [
   { href: '/about', label: 'About Us' },
+  { href: '/about/corporate-overview', label: 'Corporate Overview' },
   { href: '/companies', label: 'Our Companies' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/company', label: 'Company' },
