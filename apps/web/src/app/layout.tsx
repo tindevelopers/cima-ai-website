@@ -1,10 +1,11 @@
+
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - PetStore AI',
-    default: 'PetStore AI - Close every deal',
+    template: '%s - CIMA Animal Health',
+    default: 'CIMA Animal Health - Elevating Care Through Innovation',
   },
 }
 
