@@ -2,6 +2,8 @@
 
 A modern, high-performance website built with Next.js and Turborepo.
 
+🚀 **Deployment Status**: [![Deploy](https://github.com/tindevelopers/cima-ai-website/actions/workflows/deploy.yml/badge.svg)](https://github.com/tindevelopers/cima-ai-website/actions/workflows/deploy.yml)
+
 ## 🏗️ Monorepo Structure
 
 This project uses Turborepo to manage a monorepo with the following structure:
