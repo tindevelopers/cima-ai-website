@@ -1,5 +1,3 @@
-
-// Main page - Production deployment test
 import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
@@ -33,42 +31,44 @@ import {
   GraduationCap,
   ShoppingCart,
   Boxes,
-  Dna
+  Dna,
+  Building2,
+  Handshake
 } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   description:
-    'AI-driven tools transforming the Pet Care Industry. From veterinary diagnostics to retail optimization and pet services management.',
+    'CIMA Animal Health - Leading innovation in veterinary medicine, pet retail, and animal health solutions.',
 }
 
 function Hero() {
   return (
     <div className="relative">
-      <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
+      <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-inset ring-black/5" />
       <Container className="relative">
         <Navbar
           banner={
             <Link
               href="#"
-              className="flex items-center gap-1 rounded-full bg-[#2B1E5B]/35 px-3 py-0.5 text-sm/6 font-medium text-white data-hover:bg-[#2B1E5B]/50"
+              className="flex items-center gap-1 rounded-full bg-[#2B5A9E]/20 px-3 py-0.5 text-sm/6 font-medium text-gray-900 data-hover:bg-[#2B5A9E]/30"
             >
-              Introducing AI-Powered Pet Health Insights
+              Transforming Animal Health Through Innovation
               <ChevronRightIcon className="size-4" />
             </Link>
           }
         />
-        <div className="pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
-          <h1 className="font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
-            AI-Driven Tools for Pet Care Excellence
+        <div className="pb-24 pt-16 sm:pb-32 sm:pt-24 md:pb-48 md:pt-32">
+          <h1 className="font-display text-balance text-6xl/[0.9] font-medium tracking-tight text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
+            Leading Innovation in Animal Health
           </h1>
           <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-            Leading-edge AI solutions transforming veterinary care, retail operations, and pet services worldwide.
+            CIMA Animal Health delivers comprehensive solutions across veterinary medicine, pet retail, and animal health products.
           </p>
           <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
-            <Button href="#services">Get Started</Button>
-            <Button variant="secondary" href="#quick-wins">
-              Explore Solutions
+            <Button href="#companies">Our Companies</Button>
+            <Button variant="secondary" href="#team">
+              Leadership Team
             </Button>
           </div>
         </div>
@@ -77,396 +77,220 @@ function Hero() {
   )
 }
 
-function VeterinaryServices() {
+function CompaniesSection() {
   return (
-    <Container>
-      <Subheading>For Veterinary Professionals</Subheading>
-      <Heading as="h3" className="mt-2 max-w-3xl">
-        Advanced AI diagnostics and practice management
-      </Heading>
-
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
-        <BentoCard
-          eyebrow="Diagnostics"
-          title="AI Imaging Analysis"
-          description="Subscription-based diagnostic imaging with machine learning that detects anomalies 20% faster. Get second opinions powered by thousands of analyzed cases."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#2B1E5B]/10 to-[#5B3D8F]/10">
-              <Microscope className="size-32 text-[#2B1E5B]" strokeWidth={1} />
-            </div>
-          }
-          fade={['bottom']}
-          className="max-lg:rounded-t-4xl lg:col-span-3 lg:rounded-tl-4xl"
-        />
-        <BentoCard
-          eyebrow="Management"
-          title="All-in-One Practice Platform"
-          description="Complete AI-powered practice management: scheduling, electronic health records, billing, and automated client communications in one seamless interface."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#5B3D8F]/10 to-[#B4D13C]/10">
-              <Activity className="size-32 text-[#5B3D8F]" strokeWidth={1} />
-            </div>
-          }
-          fade={['bottom']}
-          className="lg:col-span-3 lg:rounded-tr-4xl"
-        />
-        <BentoCard
-          eyebrow="Telemedicine"
-          title="AI-Powered Remote Care"
-          description="Virtual consultations with AI triage that prioritizes urgent cases and provides preliminary assessments before appointments."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#B4D13C]/10 to-[#2B1E5B]/10">
-              <Video className="size-32 text-[#2B1E5B]" strokeWidth={1} />
-            </div>
-          }
-          className="lg:col-span-3 lg:rounded-bl-4xl"
-        />
-        <BentoCard
-          eyebrow="Education"
-          title="Continuing Education Hub"
-          description="AI-powered training modules that adapt to your learning pace, track certifications, and recommend courses based on your practice specialty."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#2B1E5B]/10 to-[#B4D13C]/10">
-              <GraduationCap className="size-32 text-[#5B3D8F]" strokeWidth={1} />
-            </div>
-          }
-          className="max-lg:rounded-b-4xl lg:col-span-3 lg:rounded-br-4xl"
-        />
-      </div>
-    </Container>
-  )
-}
-
-function RetailServices() {
-  return (
-    <div className="mx-2 mt-2 rounded-4xl bg-gray-900 py-32">
+    <div className="bg-gradient-to-b from-white to-gray-50 py-24 sm:py-32">
       <Container>
-        <Subheading dark>For Retail Locations</Subheading>
-        <Heading as="h3" dark className="mt-2 max-w-3xl">
-          Smart products and personalized shopping experiences
-        </Heading>
+        <div className="mx-auto max-w-2xl text-center">
+          <Subheading>Our Portfolio</Subheading>
+          <Heading as="h2" className="mt-2">
+            Four Leading Companies, One Vision
+          </Heading>
+          <Lead className="mt-6 text-gray-600">
+            CIMA Animal Health brings together industry-leading brands to deliver comprehensive solutions across the animal health ecosystem.
+          </Lead>
+        </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
-          <BentoCard
-            dark
-            eyebrow="Smart Products"
-            title="Connected Pet Tech"
-            description="IoT-enabled feeders, toys, and health monitors that provide real-time data and insights to pet owners through our unified app."
-            graphic={
-              <div className="flex size-full items-center justify-center bg-gradient-to-br from-white/10 to-white/5">
-                <Sparkles className="size-32 text-white/80" strokeWidth={1} />
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2">
+          {/* Creative Science */}
+          <div className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-gray-200 transition-all hover:shadow-lg hover:ring-[#4A90E2]">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3">
+                  <Microscope className="size-8 text-[#2B5A9E]" />
+                  <h3 className="text-xl font-semibold text-gray-900">Creative Science</h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                  Innovative veterinary pharmaceuticals and nutritional products designed to improve animal health and wellness through science-backed formulations.
+                </p>
               </div>
-            }
-            fade={['top']}
-            className="max-lg:rounded-t-4xl lg:col-span-4 lg:rounded-tl-4xl"
-          />
-          <BentoCard
-            dark
-            eyebrow="Personalization"
-            title="AI Recommendations"
-            description="Machine learning algorithms that analyze purchase history, pet profiles, and seasonal trends to suggest the perfect products."
-            graphic={
-              <div className="flex size-full items-center justify-center bg-gradient-to-br from-white/10 to-white/5">
-                <Brain className="size-32 text-white/80" strokeWidth={1} />
+            </div>
+          </div>
+
+          {/* Revival Animal Health */}
+          <div className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-gray-200 transition-all hover:shadow-lg hover:ring-[#4A90E2]">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3">
+                  <Heart className="size-8 text-[#2B5A9E]" />
+                  <h3 className="text-xl font-semibold text-gray-900">Revival Animal Health</h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                  Direct-to-consumer animal health products and expert advice, serving pet owners and livestock producers with quality care solutions.
+                </p>
               </div>
-            }
-            className="z-10 overflow-visible! lg:col-span-2 lg:rounded-tr-4xl"
-          />
-          <BentoCard
-            dark
-            eyebrow="Inventory"
-            title="Demand Forecasting"
-            description="Predictive analytics that optimize stock levels, reduce waste, and ensure you never run out of bestsellers."
-            graphic={
-              <div className="flex size-full items-center justify-center bg-gradient-to-br from-white/10 to-white/5">
-                <Boxes className="size-32 text-white/80" strokeWidth={1} />
+            </div>
+          </div>
+
+          {/* PetStore Direct */}
+          <div className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-gray-200 transition-all hover:shadow-lg hover:ring-[#4A90E2]">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3">
+                  <ShoppingCart className="size-8 text-[#2B5A9E]" />
+                  <h3 className="text-xl font-semibold text-gray-900">PetStore Direct</h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                  Leading distributor of professional grooming supplies and pet care products, serving grooming professionals and pet retailers nationwide.
+                </p>
               </div>
-            }
-            className="lg:col-span-2 lg:rounded-bl-4xl"
-          />
-          <BentoCard
-            dark
-            eyebrow="Automation"
-            title="Self-Service Stations"
-            description="Automated grooming bays with AI monitoring for safety, plus self-checkout kiosks that speed up transactions."
-            graphic={
-              <div className="flex size-full items-center justify-center bg-gradient-to-br from-white/10 to-white/5">
-                <Bot className="size-32 text-white/80" strokeWidth={1} />
+            </div>
+          </div>
+
+          {/* Med-Vet International */}
+          <div className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-gray-200 transition-all hover:shadow-lg hover:ring-[#4A90E2]">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3">
+                  <Stethoscope className="size-8 text-[#2B5A9E]" />
+                  <h3 className="text-xl font-semibold text-gray-900">Med-Vet International</h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                  Comprehensive veterinary medical supplies and equipment, providing veterinary professionals with the tools they need for exceptional care.
+                </p>
               </div>
-            }
-            className="lg:col-span-2"
-          />
-          <BentoCard
-            dark
-            eyebrow="Subscriptions"
-            title="AI-Curated Boxes"
-            description="Monthly subscription boxes personalized by AI based on pet age, breed, preferences, and health needs."
-            graphic={
-              <div className="flex size-full items-center justify-center bg-gradient-to-br from-white/10 to-white/5">
-                <Package className="size-32 text-white/80" strokeWidth={1} />
-              </div>
-            }
-            fade={['top']}
-            className="max-lg:rounded-b-4xl lg:col-span-2 lg:rounded-br-4xl"
-          />
+            </div>
+          </div>
         </div>
       </Container>
     </div>
   )
 }
 
-function PetServices() {
+function ManagementTeam() {
+  const executives = [
+    {
+      name: 'Lynn Snodgrass',
+      title: 'President & CEO',
+      bio: 'As the Chief Executive Officer of CIMA Animal Health, Lynn Snodgrass has been a driving force behind the company\'s growth and its commitment to revolutionizing the animal health industry. With over 25 years of experience in veterinary medicine, animal healthcare, and business leadership, Lynn is passionate about advancing the health and well-being of animals worldwide.',
+    },
+    {
+      name: 'Kyle Hemenover',
+      title: 'CFO',
+      bio: 'Kyle Hemenover is a strategic financial leader who embraces change and is committed to continuous improvement initiatives with a focus on developing talent. Kyle brings a global perspective, and his vast experience in various manufacturing and distribution industries is a testament to his expertise. He is a Certified Public Accountant and holds a master\'s in business administration from the University of Notre Dame.',
+    },
+    {
+      name: 'Joel Harrington',
+      title: 'President, Revival Animal Health',
+      bio: 'Joel brings over 20 years of leadership experience spanning call centers, marketing, digital marketing/eCommerce, and customer experience. With 15+ years in sales and operations leadership, he excels in driving growth, building high-performing teams, and fostering cross-functional collaboration.',
+    },
+    {
+      name: 'Domenico Ponti',
+      title: 'President, PetStore Direct',
+      bio: 'Domenico is a visionary entrepreneur known for building businesses from the ground up and transforming industries. As co-founder of PetStore Direct, he helped turn a bold idea into a thriving company, reshaping the pet grooming industry with innovation, efficiency, and a strong company culture.',
+    },
+    {
+      name: 'Tony Moore',
+      title: 'President, Med-Vet International',
+      bio: 'Throughout his career, Tony has held leadership positions within veterinary manufacturing and distribution organizations, where he developed deep expertise in organizational transformation, business development, sales training, marketing, product launches, and supply chain management.',
+    },
+    {
+      name: 'Elena Volnova',
+      title: 'Sr VP of Global Marketing & Digital Merchandising',
+      bio: 'Elena is a relentless entrepreneur with a deep passion for learning and growing. With expertise in merchandising, e-commerce, and marketing strategy, she has been instrumental in shaping PetStore Direct into a leading platform for grooming professionals.',
+    },
+    {
+      name: 'Ashley V. Hein',
+      title: 'Vice President of Product and Quality',
+      bio: 'With over a decade of experience in product development, regulatory compliance, and quality management in the animal health and food industries, Ashley Hein is a strategic leader known for driving innovation, optimizing processes, and fostering cross-functional collaboration.',
+    },
+    {
+      name: 'Jared Finegold',
+      title: 'Executive Vice President, Corporate Development',
+      bio: 'Jared has over twenty years of executive level experience in animal health and is responsible for driving CIMA Animal Health\'s growth through mergers & acquisitions (M&A) and strategic partnerships. He holds an MBA with honors from the Wharton School of the University of Pennsylvania.',
+    },
+  ]
+
   return (
-    <Container className="mt-32">
-      <Subheading>For Pet Services</Subheading>
-      <Heading as="h3" className="mt-2 max-w-3xl">
-        Optimize operations and deliver exceptional pet care
-      </Heading>
-
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-2">
-        <BentoCard
-          eyebrow="Boarding"
-          title="Smart Facility Management"
-          description="AI scheduling optimizes kennel allocation, monitors pet behavior through cameras, and sends automated updates to owners with photos and videos."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#2B1E5B]/10 to-[#5B3D8F]/10">
-              <HomeIcon className="size-32 text-[#2B1E5B]" strokeWidth={1} />
-            </div>
-          }
-          fade={['bottom']}
-          className="rounded-tl-4xl"
-        />
-        <BentoCard
-          eyebrow="Dog Walking"
-          title="Route Optimization & Safety"
-          description="AI-powered route planning considers weather, traffic, and pet energy levels. Real-time GPS tracking and safety alerts for peace of mind."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#5B3D8F]/10 to-[#B4D13C]/10">
-              <Dog className="size-32 text-[#5B3D8F]" strokeWidth={1} />
-            </div>
-          }
-          fade={['bottom']}
-          className="rounded-tr-4xl"
-        />
-        <BentoCard
-          eyebrow="Training"
-          title="AI Behavioral Programs"
-          description="Personalized training plans powered by behavioral AI. Track progress, get video analysis feedback, and adjust techniques in real-time."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#B4D13C]/10 to-[#2B1E5B]/10">
-              <GraduationCap className="size-32 text-[#2B1E5B]" strokeWidth={1} />
-            </div>
-          }
-          className="rounded-bl-4xl"
-        />
-        <BentoCard
-          eyebrow="Pet Sitting"
-          title="Smart Matching Platform"
-          description="AI algorithms match pets with ideal sitters based on experience, personality fit, and specific care requirements. Automated booking and payments."
-          graphic={
-            <div className="flex size-full items-center justify-center bg-gradient-to-br from-[#2B1E5B]/10 to-[#B4D13C]/10">
-              <Users className="size-32 text-[#5B3D8F]" strokeWidth={1} />
-            </div>
-          }
-          className="rounded-br-4xl"
-        />
-      </div>
-    </Container>
-  )
-}
-
-function ROISection() {
-  return (
-    <Container className="mt-32">
-      <Subheading>Proven Results</Subheading>
-      <Heading as="h3" className="mt-2">
-        Real ROI across the industry
-      </Heading>
-      <Lead className="mt-6 max-w-3xl">
-        Our AI solutions deliver measurable results for businesses and pet owners alike.
-      </Lead>
-
-      <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {/* Retail Store */}
-        <div className="rounded-3xl bg-white p-8 shadow-md ring-1 ring-black/5">
-          <div className="flex items-center gap-3">
-            <ShoppingCart className="size-8 text-[#2B1E5B]" />
-            <h3 className="text-xl font-semibold text-gray-900">Retail Store</h3>
-          </div>
-          <div className="mt-6 space-y-6">
-            <div className="flex items-start gap-3">
-              <TrendingUp className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">AI Inventory Management</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  <AnimatedNumber start={0} end={25} />% Cost Reduction
-                </p>
-                <p className="text-xs text-gray-500 mt-1">Lower carrying costs</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <DollarSign className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">Personalized Recommendations</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  <AnimatedNumber start={0} end={35} />% Higher Sales
-                </p>
-                <p className="text-xs text-gray-500 mt-1">Average transaction increase</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <MessageSquare className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">Automated Customer Service</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  <AnimatedNumber start={0} end={60} />% Cost Savings
-                </p>
-                <p className="text-xs text-gray-500 mt-1">Support cost reduction</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Veterinary Practice */}
-        <div className="rounded-3xl bg-white p-8 shadow-md ring-1 ring-black/5">
-          <div className="flex items-center gap-3">
-            <Stethoscope className="size-8 text-[#5B3D8F]" />
-            <h3 className="text-xl font-semibold text-gray-900">Veterinary Practice</h3>
-          </div>
-          <div className="mt-6 space-y-6">
-            <div className="flex items-start gap-3">
-              <Clock className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">AI Documentation</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  <AnimatedNumber start={0} end={2} /> Hours Saved Daily
-                </p>
-                <p className="text-xs text-gray-500 mt-1">10 more appointments per week</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Calendar className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">Automated Reminders</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  <AnimatedNumber start={0} end={40} />% More Visits
-                </p>
-                <p className="text-xs text-gray-500 mt-1">Preventive care increase</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Activity className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">Diagnostic AI</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  <AnimatedNumber start={0} end={20} />% Better Detection
-                </p>
-                <p className="text-xs text-gray-500 mt-1">Early disease identification</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Pet Owner */}
-        <div className="rounded-3xl bg-white p-8 shadow-md ring-1 ring-black/5">
-          <div className="flex items-center gap-3">
-            <Heart className="size-8 text-[#B4D13C]" />
-            <h3 className="text-xl font-semibold text-gray-900">Pet Owner</h3>
-          </div>
-          <div className="mt-6 space-y-6">
-            <div className="flex items-start gap-3">
-              <DollarSign className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">Early Disease Detection</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  $<AnimatedNumber start={0} end={3} />,000+ Saved
-                </p>
-                <p className="text-xs text-gray-500 mt-1">Emergency care prevention</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Activity className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">Optimal Nutrition</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  <AnimatedNumber start={0} end={30} />% Reduction
-                </p>
-                <p className="text-xs text-gray-500 mt-1">Obesity-related conditions</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Brain className="size-5 text-[#B4D13C] mt-1" />
-              <div>
-                <p className="text-sm font-medium text-gray-600">Behavioral Monitoring</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">Prevention</p>
-                <p className="text-xs text-gray-500 mt-1">Anxiety-related damage avoided</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Container>
-  )
-}
-
-function EmergingTrends() {
-  return (
-    <div className="bg-linear-to-b from-white to-gray-100 py-32 mt-32">
+    <div className="bg-white py-24 sm:py-32">
       <Container>
-        <Subheading>The Future of Pet Care</Subheading>
-        <Heading as="h3" className="mt-2">
-          Emerging trends: Next 3-5 years
-        </Heading>
-        <Lead className="mt-6 max-w-3xl">
-          Innovation never stops. Here&apos;s what&apos;s coming next in pet care technology.
-        </Lead>
+        <div className="mx-auto max-w-2xl text-center">
+          <Subheading>Leadership</Subheading>
+          <Heading as="h2" className="mt-2">
+            Our Management Team
+          </Heading>
+          <Lead className="mt-6 text-gray-600">
+            Experienced leaders driving innovation and excellence across the animal health industry.
+          </Lead>
+        </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 transition-all hover:shadow-lg hover:ring-[#2B1E5B]/20">
-            <Dna className="size-10 text-[#2B1E5B]" />
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">AI Pet Cloning</h3>
-            <p className="mt-2 text-sm text-gray-600">
-              Digital twins simulate health scenarios to predict and prevent diseases before they occur.
+        <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {executives.map((exec) => (
+            <div
+              key={exec.name}
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-white p-6 shadow-sm ring-1 ring-gray-200 transition-all hover:shadow-md"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-[#4A90E2] to-[#2B5A9E]">
+                  <Users className="size-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">{exec.name}</h3>
+                  <p className="text-sm font-medium text-[#2B5A9E]">{exec.title}</p>
+                </div>
+              </div>
+              <p className="text-sm leading-relaxed text-gray-600">{exec.bio}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </div>
+  )
+}
+
+function PartneringSection() {
+  return (
+    <div className="relative overflow-hidden bg-gradient-to-br from-[#2B5A9E] to-[#4A90E2] py-24 sm:py-32">
+      <div className="absolute inset-0 bg-[url('/dot-texture.svg')] opacity-10" />
+      <Container className="relative">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+            <Handshake className="size-5 text-white" />
+            <span className="text-sm font-medium text-white">Collaboration</span>
+          </div>
+          <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Partner with Us
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-white/90">
+            Want to collaborate, distribute, or learn more about our companies? Get in touch with our team today.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button
+              href="#contact"
+              className="bg-white text-[#2B5A9E] hover:bg-gray-100"
+            >
+              Contact Us
+            </Button>
+            <Button
+              href="#companies"
+              variant="secondary"
+              className="border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
+            >
+              Explore Our Companies
+            </Button>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+            <Building2 className="mb-4 size-8 text-white" />
+            <h3 className="text-lg font-semibold text-white">Distribution Partners</h3>
+            <p className="mt-2 text-sm text-white/80">
+              Expand your product portfolio with our trusted brands
             </p>
           </div>
-
-          <div className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 transition-all hover:shadow-lg hover:ring-[#2B1E5B]/20">
-            <Brain className="size-10 text-[#5B3D8F]" />
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Emotional AI</h3>
-            <p className="mt-2 text-sm text-gray-600">
-              Advanced computer vision understands pet emotions from facial expressions and body language.
+          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+            <Sparkles className="mb-4 size-8 text-white" />
+            <h3 className="text-lg font-semibold text-white">Innovation Partners</h3>
+            <p className="mt-2 text-sm text-white/80">
+              Collaborate on next-generation animal health solutions
             </p>
           </div>
-
-          <div className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 transition-all hover:shadow-lg hover:ring-[#2B1E5B]/20">
-            <Microscope className="size-10 text-[#B4D13C]" />
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Preventive Genomics</h3>
-            <p className="mt-2 text-sm text-gray-600">
-              CRISPR technology eliminates hereditary diseases before pets are born.
-            </p>
-          </div>
-
-          <div className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 transition-all hover:shadow-lg hover:ring-[#2B1E5B]/20">
-            <Bot className="size-10 text-[#2B1E5B]" />
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Autonomous Care</h3>
-            <p className="mt-2 text-sm text-gray-600">
-              Robots handle feeding, play sessions, and waste cleanup with minimal intervention.
-            </p>
-          </div>
-
-          <div className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 transition-all hover:shadow-lg hover:ring-[#2B1E5B]/20">
-            <Sparkles className="size-10 text-[#5B3D8F]" />
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Metaverse Pets</h3>
-            <p className="mt-2 text-sm text-gray-600">
-              Virtual companions provide companionship while collecting real-world health insights.
-            </p>
-          </div>
-
-          <div className="group rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 transition-all hover:shadow-lg hover:ring-[#2B1E5B]/20">
-            <Activity className="size-10 text-[#B4D13C]" />
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Predictive Health</h3>
-            <p className="mt-2 text-sm text-gray-600">
-              AI predicts health issues weeks in advance through continuous biometric monitoring.
+          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+            <TrendingUp className="mb-4 size-8 text-white" />
+            <h3 className="text-lg font-semibold text-white">Growth Partners</h3>
+            <p className="mt-2 text-sm text-white/80">
+              Join us in expanding the animal health market
             </p>
           </div>
         </div>
@@ -475,115 +299,37 @@ function EmergingTrends() {
   )
 }
 
-function QuickWins() {
+function StatsSection() {
   return (
-    <Container className="mt-32 pb-32">
-      <Subheading>Quick Wins</Subheading>
-      <Heading as="h3" className="mt-2">
-        Get started today
-      </Heading>
-      <Lead className="mt-6 max-w-3xl">
-        Choose your path and see results quickly with our proven implementation strategies.
-      </Lead>
-
-      <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {/* For Retailers */}
-        <div className="rounded-3xl bg-white p-8 shadow-md ring-1 ring-black/5">
-          <div className="flex items-center gap-3 mb-6">
-            <ShoppingBag className="size-8 text-[#2B1E5B]" />
-            <h3 className="text-xl font-semibold text-gray-900">For Retailers</h3>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">AI Inventory Management</p>
-                <p className="text-xs text-gray-600 mt-1">6-month ROI guarantee</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">Customer Service Chatbot</p>
-                <p className="text-xs text-gray-600 mt-1">Immediate impact on support costs</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">Personalized Email Campaigns</p>
-                <p className="text-xs text-gray-600 mt-1">30% open rate increase</p>
-              </div>
-            </div>
-          </div>
-          <Button className="w-full mt-6" href="#services">Learn More</Button>
+    <div className="bg-gray-50 py-24 sm:py-32">
+      <Container>
+        <div className="mx-auto max-w-2xl text-center">
+          <Subheading>Impact</Subheading>
+          <Heading as="h2" className="mt-2">
+            Driving Excellence Across the Industry
+          </Heading>
         </div>
 
-        {/* For Vets */}
-        <div className="rounded-3xl bg-white p-8 shadow-md ring-1 ring-black/5">
-          <div className="flex items-center gap-3 mb-6">
-            <Stethoscope className="size-8 text-[#5B3D8F]" />
-            <h3 className="text-xl font-semibold text-gray-900">For Veterinarians</h3>
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-200">
+            <div className="text-4xl font-bold text-[#2B5A9E]">25+</div>
+            <div className="mt-2 text-sm font-medium text-gray-600">Years of Experience</div>
           </div>
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">AI Documentation Software</p>
-                <p className="text-xs text-gray-600 mt-1">Save 2 hours daily per vet</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">Telemedicine with AI Triage</p>
-                <p className="text-xs text-gray-600 mt-1">Expand patient base remotely</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">AI Imaging Analysis</p>
-                <p className="text-xs text-gray-600 mt-1">Second opinions for accuracy</p>
-              </div>
-            </div>
+          <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-200">
+            <div className="text-4xl font-bold text-[#2B5A9E]">4</div>
+            <div className="mt-2 text-sm font-medium text-gray-600">Leading Companies</div>
           </div>
-          <Button className="w-full mt-6" href="#services">Learn More</Button>
+          <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-200">
+            <div className="text-4xl font-bold text-[#2B5A9E]">1000+</div>
+            <div className="mt-2 text-sm font-medium text-gray-600">Products & Solutions</div>
+          </div>
+          <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-200">
+            <div className="text-4xl font-bold text-[#2B5A9E]">50+</div>
+            <div className="mt-2 text-sm font-medium text-gray-600">Countries Served</div>
+          </div>
         </div>
-
-        {/* For Pet Parents */}
-        <div className="rounded-3xl bg-white p-8 shadow-md ring-1 ring-black/5">
-          <div className="flex items-center gap-3 mb-6">
-            <Heart className="size-8 text-[#B4D13C]" />
-            <h3 className="text-xl font-semibold text-gray-900">For Pet Parents</h3>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">Smart Health Collar</p>
-                <p className="text-xs text-gray-600 mt-1">24/7 health monitoring</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">AI Diet Recommendations</p>
-                <p className="text-xs text-gray-600 mt-1">Personalized nutrition plans</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="size-5 text-[#B4D13C] mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-gray-900">Automated Feeding System</p>
-                <p className="text-xs text-gray-600 mt-1">Perfect portion control</p>
-              </div>
-            </div>
-          </div>
-          <Button className="w-full mt-6" href="#services">Learn More</Button>
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   )
 }
 
@@ -591,17 +337,13 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Hero />
-      <main id="services">
-        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-32 mt-10">
-          <VeterinaryServices />
+      <main id="companies">
+        <CompaniesSection />
+        <div id="team">
+          <ManagementTeam />
         </div>
-        <RetailServices />
-        <div className="bg-linear-to-b from-white to-gray-50 py-32">
-          <PetServices />
-        </div>
-        <ROISection />
-        <EmergingTrends />
-        <QuickWins />
+        <PartneringSection />
+        <StatsSection />
       </main>
       <Footer />
     </div>
