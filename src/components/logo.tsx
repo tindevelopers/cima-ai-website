@@ -1,3 +1,4 @@
+
 'use client'
 
 import { clsx } from 'clsx'
@@ -13,9 +14,9 @@ export function Logo({ className }: { className?: string }) {
       transition={{ duration: 0.3 }}
     >
       <Image
-        src="/petstore-ai-logo.png"
-        alt="PetStore AI"
-        width={150}
+        src="/cima-logo.png"
+        alt="CIMA Animal Health"
+        width={180}
         height={49}
         className="h-full w-auto object-contain"
         priority
@@ -28,8 +29,8 @@ export function Mark({ className }: { className?: string }) {
   return (
     <div className={clsx(className, 'relative')}>
       <Image
-        src="/petstore-ai-logo.png"
-        alt="PetStore AI"
+        src="/cima-logo.png"
+        alt="CIMA Animal Health"
         fill
         className="object-contain"
       />

@@ -1,248 +1,86 @@
-'use client'
 
-import * as Headless from '@headlessui/react'
-import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
-import { clsx } from 'clsx'
-import {
-  MotionValue,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
-  type HTMLMotionProps,
-} from 'framer-motion'
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
-import useMeasure, { type RectReadOnly } from 'react-use-measure'
-import { Container } from './container'
-import { Link } from './link'
-import { Heading, Subheading } from './text'
+import { Container } from '@/components/container'
+import { Heading, Lead } from '@/components/text'
 
 const testimonials = [
   {
-    img: '/testimonials/tina-yards.jpg',
-    name: 'Tina Yards',
-    title: 'VP of Sales, Protocol',
+    img: '/testimonials/tanya-douglas.jpg',
+    name: 'Dr. Sarah Mitchell',
+    title: 'Veterinary Practice Owner',
     quote:
-      'Thanks to PetStore AI, we’re finding new leads that we never would have found with legal methods.',
+      'CIMA\'s AI-powered diagnostic tools have transformed how we practice veterinary medicine. The accuracy and speed are remarkable.',
   },
   {
-    img: '/testimonials/conor-neville.jpg',
-    name: 'Conor Neville',
-    title: 'Head of Customer Success, TaxPal',
+    img: '/testimonials/michael-foster.jpg',
+    name: 'Michael Chen',
+    title: 'Pet Retail Manager',
     quote:
-      'PetStore AI made undercutting all of our competitors an absolute breeze.',
+      'Revival Animal Health\'s inventory management system powered by CIMA\'s AI has eliminated stockouts and improved our margins significantly.',
   },
   {
-    img: '/testimonials/amy-chase.jpg',
-    name: 'Amy Chase',
-    title: 'Head of GTM, Pocket',
-    quote:
-      'We closed a deal in literally a few minutes because we knew their exact budget.',
-  },
-  {
-    img: '/testimonials/veronica-winton.jpg',
-    name: 'Veronica Winton',
-    title: 'CSO, Planeteria',
-    quote:
-      'We’ve managed to put two of our main competitors out of business in 6 months.',
-  },
-  {
-    img: '/testimonials/dillon-lenora.jpg',
-    name: 'Dillon Lenora',
-    title: 'VP of Sales, Detax',
-    quote: 'I was able to replace 80% of my team with PetStore AI bots.',
-  },
-  {
-    img: '/testimonials/harriet-arron.jpg',
-    name: 'Harriet Arron',
-    title: 'Account Manager, Commit',
-    quote:
-      'I’ve smashed all my targets without having to speak to a lead in months.',
+    img: '/testimonials/emily-taylor.jpg',
+    name: 'Emily Rodriguez',
+    title: 'Professional Groomer',
+    quote: 'PetStore Direct\'s AI-driven supply recommendations have been a game-changer for my grooming business.',
   },
 ]
 
-function TestimonialCard({
-  name,
-  title,
-  img,
-  children,
-  bounds,
-  scrollX,
-  ...props
-}: {
-  img: string
-  name: string
-  title: string
-  children: React.ReactNode
-  bounds: RectReadOnly
-  scrollX: MotionValue<number>
-} & HTMLMotionProps<'div'>) {
-  let ref = useRef<HTMLDivElement | null>(null)
-
-  let computeOpacity = useCallback(() => {
-    let element = ref.current
-    if (!element || bounds.width === 0) return 1
-
-    let rect = element.getBoundingClientRect()
-
-    if (rect.left < bounds.left) {
-      let diff = bounds.left - rect.left
-      let percent = diff / rect.width
-      return Math.max(0.5, 1 - percent)
-    } else if (rect.right > bounds.right) {
-      let diff = rect.right - bounds.right
-      let percent = diff / rect.width
-      return Math.max(0.5, 1 - percent)
-    } else {
-      return 1
-    }
-  }, [ref, bounds.width, bounds.left, bounds.right])
-
-  let opacity = useSpring(computeOpacity(), {
-    stiffness: 154,
-    damping: 23,
-  })
-
-  useLayoutEffect(() => {
-    opacity.set(computeOpacity())
-  }, [computeOpacity, opacity])
-
-  useMotionValueEvent(scrollX, 'change', () => {
-    opacity.set(computeOpacity())
-  })
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{ opacity }}
-      {...props}
-      className="relative flex aspect-9/16 w-72 shrink-0 snap-start scroll-ml-(--scroll-padding) flex-col justify-end overflow-hidden rounded-3xl sm:aspect-3/4 sm:w-96"
-    >
-      <img
-        alt=""
-        src={img}
-        className="absolute inset-x-0 top-0 aspect-square w-full object-cover"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 rounded-3xl bg-linear-to-t from-black from-[calc(7/16*100%)] ring-1 ring-gray-950/10 ring-inset sm:from-25%"
-      />
-      <figure className="relative p-10">
-        <blockquote>
-          <p className="relative text-xl/7 text-white">
-            <span aria-hidden="true" className="absolute -translate-x-full">
-              “
-            </span>
-            {children}
-            <span aria-hidden="true" className="absolute">
-              ”
-            </span>
-          </p>
-        </blockquote>
-        <figcaption className="mt-6 border-t border-white/20 pt-6">
-          <p className="text-sm/6 font-medium text-white">{name}</p>
-          <p className="text-sm/6 font-medium">
-            <span className="bg-linear-to-r from-[#B4D13C] from-28% via-[#5B3D8F] via-70% to-[#2B1E5B] bg-clip-text text-transparent">
-              {title}
-            </span>
-          </p>
-        </figcaption>
-      </figure>
-    </motion.div>
-  )
-}
-
-function CallToAction() {
-  return (
-    <div>
-      <p className="max-w-sm text-sm/6 text-gray-600">
-        Join the best sellers in the business and start using PetStore AI to hit
-        your targets today.
-      </p>
-      <div className="mt-2">
-        <Link
-          href="#"
-          className="inline-flex items-center gap-2 text-sm/6 font-medium text-pink-600"
-        >
-          Get started
-          <ArrowLongRightIcon className="size-5" />
-        </Link>
-      </div>
-    </div>
-  )
-}
-
 export function Testimonials() {
-  let scrollRef = useRef<HTMLDivElement | null>(null)
-  let { scrollX } = useScroll({ container: scrollRef })
-  let [setReferenceWindowRef, bounds] = useMeasure()
-  let [activeIndex, setActiveIndex] = useState(0)
-
-  useMotionValueEvent(scrollX, 'change', (x) => {
-    setActiveIndex(Math.floor(x / scrollRef.current!.children[0].clientWidth))
-  })
-
-  function scrollTo(index: number) {
-    let gap = 32
-    let width = (scrollRef.current!.children[0] as HTMLElement).offsetWidth
-    scrollRef.current!.scrollTo({ left: (width + gap) * index })
-  }
-
   return (
-    <div className="overflow-hidden py-32">
-      <Container>
-        <div ref={setReferenceWindowRef}>
-          <Subheading>What everyone is saying</Subheading>
-          <Heading as="h3" className="mt-2">
-            Trusted by professionals.
-          </Heading>
-        </div>
-      </Container>
-      <div
-        ref={scrollRef}
-        className={clsx([
-          'mt-16 flex gap-8 px-(--scroll-padding)',
-          '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-          'snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth',
-          '[--scroll-padding:max(--spacing(6),calc((100vw-(var(--container-2xl)))/2))] lg:[--scroll-padding:max(--spacing(8),calc((100vw-(var(--container-7xl)))/2))]',
-        ])}
-      >
-        {testimonials.map(({ img, name, title, quote }, testimonialIndex) => (
-          <TestimonialCard
-            key={testimonialIndex}
-            name={name}
-            title={title}
-            img={img}
-            bounds={bounds}
-            scrollX={scrollX}
-            onClick={() => scrollTo(testimonialIndex)}
-          >
-            {quote}
-          </TestimonialCard>
-        ))}
-        <div className="w-2xl shrink-0 sm:w-216" />
+    <div className="relative pb-24 pt-16 sm:pb-32 sm:pt-24">
+      <div className="absolute inset-x-0 top-0 h-96 text-gray-500/10 [mask-image:linear-gradient(to_bottom,white,transparent)] sm:h-[54rem]">
+        <svg
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full"
+        >
+          <defs>
+            <pattern
+              id="testimonials-pattern"
+              width="128"
+              height="128"
+              patternUnits="userSpaceOnUse"
+              x="50%"
+              y="100%"
+            >
+              <path d="M0 128V.5H128" fill="none" stroke="currentColor" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#testimonials-pattern)" />
+        </svg>
       </div>
-      <Container className="mt-16">
-        <div className="flex justify-between">
-          <CallToAction />
-          <div className="hidden sm:flex sm:gap-2">
-            {testimonials.map(({ name }, testimonialIndex) => (
-              <Headless.Button
+      <Container className="relative">
+        <figure>
+          <blockquote>
+            <Heading as="h2" className="max-w-3xl">
+              <span className="bg-linear-to-r from-[#00d084] from-28% via-[#00163C] via-70% to-[#1D3D7C] bg-clip-text text-transparent">
+                Join the best professionals in the business and start using CIMA Animal Health
+              </span>{' '}
+              to deliver exceptional care with AI-powered innovation.
+            </Heading>
+          </blockquote>
+          <figcaption className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial, testimonialIndex) => (
+              <div
                 key={testimonialIndex}
-                onClick={() => scrollTo(testimonialIndex)}
-                data-active={
-                  activeIndex === testimonialIndex ? true : undefined
-                }
-                aria-label={`Scroll to testimonial from ${name}`}
-                className={clsx(
-                  'size-2.5 rounded-full border border-transparent bg-gray-300 transition',
-                  'data-active:bg-gray-400 data-hover:bg-gray-400',
-                  'forced-colors:data-active:bg-[Highlight] forced-colors:data-focus:outline-offset-4',
-                )}
-              />
+                className="rounded-4xl p-10 shadow-md shadow-gray-900/5 ring-1 ring-gray-900/5"
+              >
+                <blockquote>
+                  <p className="relative text-sm/6 tracking-tight text-gray-950 before:absolute before:-translate-x-full before:content-['"'] after:absolute after:content-['"']">
+                    {testimonial.quote}
+                  </p>
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-3">
+                  <div className="text-sm/5">
+                    <div className="font-semibold text-gray-950">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-gray-600">{testimonial.title}</div>
+                  </div>
+                </figcaption>
+              </div>
             ))}
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </Container>
     </div>
   )
