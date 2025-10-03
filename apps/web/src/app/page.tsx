@@ -1,4 +1,5 @@
 
+// Main page - Production deployment test
 import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
