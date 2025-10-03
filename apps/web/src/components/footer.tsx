@@ -148,7 +148,7 @@ function SocialLinks() {
 function Copyright() {
   return (
     <div className="text-sm/6 text-gray-950">
-      &copy; {new Date().getFullYear()} PetStore AI Inc.
+      &copy; {new Date().getFullYear()} CIMA Animal Health
     </div>
   )
 }

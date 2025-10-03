@@ -14,9 +14,9 @@ export function Logo({ className }: { className?: string }) {
     >
       <Image
         src="/petstore-ai-logo.png"
-        alt="PetStore AI"
+        alt="CIMA Animal Health"
         width={150}
-        height={49}
+        height={40}
         className="h-full w-auto object-contain"
         priority
       />
@@ -29,7 +29,7 @@ export function Mark({ className }: { className?: string }) {
     <div className={clsx(className, 'relative')}>
       <Image
         src="/petstore-ai-logo.png"
-        alt="PetStore AI"
+        alt="CIMA Animal Health"
         fill
         className="object-contain"
       />
